@@ -1,4 +1,9 @@
-describe('template spec', () => {
+
+describe('Test registration page', () => {
+  beforeEach(function () {
+  cy.task('db:seed')
+  });
+
   it('passes', () => {
     cy.visit(Cypress.env('host')+'register')
     var seconds = new Date().getTime() / 1000;
@@ -8,5 +13,5 @@ describe('template spec', () => {
     cy.get('#password_confirmation').type("password")
     cy.get('#formLogin').submit()
     cy.get(".p-6").contains("You're logged in!");
-  })
+  });
 })
